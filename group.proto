@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "github.com/wesley-lewis/learning-proto-buf/model";
+
+import "user.proto";
+
+enum Category {
+	DEVELOPER = 0;
+	OPERATOR = 1;
+}
+
+message Group {
+	int32 id = 1;
+	Category category = 2;
+	float score = 3;
+	repeated User users = 4;
+}

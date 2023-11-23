@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option go_package="github.com/wesley-lewis/learning-proto-buf/model";
+
+message User {
+	string user_id = 1;
+	string email = 2;
+}
+
