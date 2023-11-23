@@ -7,3 +7,10 @@ message User {
 	string email = 2;
 }
 
+message UserRequest {
+	string user_id = 1;
+}
+
+service UserService {
+	rpc GetUser(UserRequest) returns (User);
+}
