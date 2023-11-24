@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option go_package="github.com/wesley-lewis/learning-proto-buf/grpc_emp";
+
+message Employee {
+	string name		= 1;
+	string id		= 2;
+	Address address = 3;
+}
+
+message Address {
+	string building = 1;
+	string street	= 2;
+	string town		= 3;
+	string city		= 4;
+	string state	= 5;
+}
+
+message GetEmployeeRequest {
+	string id		= 1;
+}
+
+message SetEmployeeRequest {
+	string name		= 1;
+	Address address = 2;
+}
+
+message SetEmployeeResponse {
+	string id		= 1;
+}
+
+message GetAllResponse {
+	repeated Employee employees = 1;
+}
+
+service EmployeeInfo {
+	rpc Get(GetEmployeeRequest)	returns (Employee);
+	rpc Set(SetEmployeeRequest) returns (SetEmployeeResponse);
+	rpc GetAll(GetEmployeeRequest) returns (GetAllResponse);
+}
