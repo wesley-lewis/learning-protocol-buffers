@@ -5,10 +5,8 @@ package main
 import (
 	"fmt"
 
-	"context"
 
 	"github.com/wesley-lewis/learning-proto-buf/model"
-	"google.golang.org/grpc"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -33,22 +31,3 @@ func main() {
 	fmt.Println(&grp)
 }
 
-type UserServiceClient interface {
-	GetUser(ctx context.Context, in *model.UserRequest, opts grpc.CallOption) (*model.User, error)
-}
-
-type userServiceClient struct {
-	cc grpc.ClientConnInterface
-}
-
-func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
-	return &userServiceClient{cc}
-}
-
-func(c *userServiceClient) GetUser(ctx context.Context, in *model.UserRequest, opts grpc.CallOption) (*model.User, error) {
-	return nil, nil
-}
-
-type UserServiceServer interface {
-	GetUser(ctx context.Context, in *model.UserRequest, opts grpc.CallOption) (*model.User, error)
-}
