@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package="github.com/wesley-lewis/learning-proto-buf/chat";
+
+message ChatMessage {
+	int64 id = 1;
+	int64 to = 2;
+	string txt = 3;
+}
+
+message ChatResponse {
+	int64 total_char = 1;
+}
+
+service ChatService {
+	rpc SendText(stream ChatMessage) returns (stream ChatResponse);
+}
